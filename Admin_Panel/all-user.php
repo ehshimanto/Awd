@@ -67,6 +67,7 @@
                                             <ul class="dropdown-menu">
                                               <li><a class="dropdown-item" href="view-user.php?v=<?= $data['st_id'] ;?>">View</a></li>
                                               <li><a class="dropdown-item" href="edit-user.php?e=<?= $data['st_id'] ;?>">Edit</a></li>
+                                              <li><a class="dropdown-item" href="chinge-password.php?p=<?= $data['st_id'] ;?>">chinge-password</a></li>
                                               <li><a id="delete" class="dropdown-item"  href="delete.php?d=<?= $data['st_id'] ;?>">Delete</a></li>
                                             </ul>
                                           </div>
