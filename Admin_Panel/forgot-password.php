@@ -28,7 +28,7 @@ include_once "file_function/function.php";
                                         $QR=mysqli_query($connect,$sel);
                                         $data=mysqli_fetch_array($QR);
                                         if($data){
-                                            header("Location:reset-password.php");
+                                            header("Location:reset-password.php?rp=".$data['st_slug']);
                                         }else{
                                             echo"This Email Did Not Match";
                                         }

@@ -21,13 +21,47 @@ include_once "file_function/function.php";
                         <div class="row">
                             <div class="col-md-7 pe-0">
                                 <div class="form-left h-100 py-5 px-5">
+                                    <?php
+                                    $slug= $_GET['rp'];
+                                    $select= "SELECT * FROM students WHERE st_slug='$slug'";
+                                    $QR = mysqli_query($connect,$select) ;
+                                    $info= mysqli_fetch_array($QR);
+                                    $id=$info['st_id'];
+                                   
+                                    if($_POST){
+                                     $npw= md5($_POST['new_pass']);
+                                     $cpw= md5($_POST['cpass']);
+                                     $updata="UPDATE students SET pw='$npw' WHERE st_id='$id'";
                                     
+                                       if(!empty($npw)){
+                                         if(!empty($cpw)){
+                                           if($npw===$cpw){
+                                             
+                                             if(mysqli_query($connect,$updata)){
+                                               header("Location:login.php");
+                                             }else{
+                                               echo "Opps! Password Change Faild";
+                                             }
+                                             
+                                           }else{
+                                            echo "Password Did Not Match";
+                                           }
+                                         }else{
+                                          echo "Please enter Confarm Password";
+                                         }
+                                       }else{
+                                        echo "Please enter New Password";
+                                       }
+                                      
+                                                                      
+                                    }
+                                    ?>
                                     <form action="" method="post" class="row g-4">
                                         <div class="col-12">
                                             <label>New Password<span class="text-danger">*</span></label>
                                             <div class="input-group">
                                                 <div class="input-group-text"><i class="fas fa-lock"></i></div>
-                                                <input type="password" name="newpass" class="form-control" placeholder="Enter password">
+                                                <input type="password" name="new_pass" class="form-control" placeholder="Enter password">
                                             </div>
                                         </div>
 

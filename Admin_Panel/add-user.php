@@ -10,11 +10,12 @@
   $role =  $_POST['role'];
   $image = $_FILES['pic'];
   $imageName ='';
+  $slug=uniqid('u');
   
   if($image['name']!=''){
   $imageName= 'user_'.time().'_'.rand(100000,300000000).'.'.pathinfo($image['name'],PATHINFO_EXTENSION);
   }
-  $insert ="INSERT INTO students(st_name,st_number,st_email,st_user,pw,role_id,st_photo) VALUES('$name','$phone','$email','$username','$password','$role','$imageName')" ;
+  $insert ="INSERT INTO students(st_name,st_number,st_email,st_user,pw,role_id,st_photo,st_slug) VALUES('$name','$phone','$email','$username','$password','$role','$imageName','$slug')" ;
  
  if(!empty($name)){
   if(!empty($phone)){
